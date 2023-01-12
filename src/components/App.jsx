@@ -44,13 +44,15 @@ export default function App() {
 
 
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Phonebook</h1>
       <ContactForm onSubmit={onSubmit} />
 
       <h2>Contacts</h2>
       <Filter filter={filter} onChange={changeFilter} />
-      {contacts.length > 0 && <ContactList contacts={getVisibleContacts()} onDelete={deleteContact} />}
+      {contacts.length > 0 && (
+        <ContactList contacts={getVisibleContacts()} onDelete={deleteContact} />
+      )}
     </div>
-  )
+  );
 }
