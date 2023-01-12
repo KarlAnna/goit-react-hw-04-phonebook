@@ -42,6 +42,17 @@ export default function App() {
     setContacts(prev => prev.filter(contact => contact.id !== id));
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.contacts !== prevState) {
+  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+  //   }
+  // }
+
+  // componentDidMount() {
+  //   const contactsInLocaleStorage = JSON.parse(localStorage.getItem('contacts'))
+  //   if (contactsInLocaleStorage) {
+  //     this.setState({contacts: contactsInLocaleStorage})
+  //   }
 
   return (
     <div className="container">
