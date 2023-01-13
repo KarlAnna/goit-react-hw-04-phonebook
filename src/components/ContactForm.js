@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+// import useLocalStorage from './hooks/useLocalStorage';
 import './Phonebook.css'
 
 export default function ContactForm({ onSubmit }) {
-    const[name, setName] = useState('')
+    const [name, setName] = useState('')
     const [number, setNumber] = useState('')
 
     const formSubmitHandler = (e) => {
         e.preventDefault()
-        onSubmit(name, number)
+        const { name, number } = e.target.elements;
+        onSubmit(name.value, number.value)
         reset()
     }
 
-    const handleNameChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target
         switch (name) {
             case 'name':
@@ -35,7 +37,7 @@ export default function ContactForm({ onSubmit }) {
         <form className="form" onSubmit={formSubmitHandler}>
             <label htmlFor="name">Name</label>
             <input
-                onChange={handleNameChange}
+                onChange={handleChange}
                 value={name}
                 type="text"
                 name="name"
@@ -45,7 +47,7 @@ export default function ContactForm({ onSubmit }) {
             />
             <label htmlFor="number">Number</label>
             <input
-                onChange={handleNameChange}
+                onChange={handleChange}
                 value={number}
                 type="tel"
                 name="number"
